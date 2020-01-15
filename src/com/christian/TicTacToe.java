@@ -2,8 +2,18 @@ package com.christian;
 
 import java.util.Scanner;
 
+/**
+ * The type Tic tac toe.
+ *
+ * @author Christian Iradukunda
+ */
 public class TicTacToe {
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
 
         /* Initialize the board */
@@ -34,6 +44,11 @@ public class TicTacToe {
         printBoard(board);
     }
 
+    /**
+     * Print board.
+     *
+     * @param board the board
+     */
     /* A method that prints the board */
     private static void printBoard(String [][] board){
         /* Checking if the board has been initialized*/
@@ -53,6 +68,13 @@ public class TicTacToe {
     }
 
 
+    /**
+     * Play.
+     *
+     * @param board          the board
+     * @param humanPlayer    the human player
+     * @param computerPlayer the computer player
+     */
     private static void play(String [][] board, String humanPlayer, String computerPlayer){
         System.out.print("\nPick a position to play at: ");
         Scanner scan = new Scanner(System.in);
@@ -73,7 +95,13 @@ public class TicTacToe {
         putDataInTheBoard(board, computerChoice, computerPlayer);
     }
 
-    /* inserting player's moves into the board. since the board is small, i decided to not make a loop */
+    /**
+     * inserting player's moves into the board. since the board is small, i decided to not make a loop.
+     *
+     * @param board    the board
+     * @param position the position
+     * @param player   the player
+     */
     private static void putDataInTheBoard(String [][] board, Integer position, String player){
         switch (position){
             case 1:
@@ -108,7 +136,12 @@ public class TicTacToe {
         }
     }
 
-    /* This method if there are still possible moves in the board */
+    /**
+     * his method if there are still possible moves in the board.
+     *
+     * @param board the board
+     * @return the boolean
+     */
     private static boolean stillHasMoves(String [][] board){
 
         for(int i=0; i<=2; i++){
@@ -120,5 +153,34 @@ public class TicTacToe {
             }
         }
         return false;
+    }
+
+    /**
+     * This function checks if there is a win in the board.
+     *
+     * @param board the board
+     * @return the boolean
+     */
+    private static boolean checkWins(String [][] board){
+
+        /* checking through rows */
+        for(int i=0; i<=2; i++){
+            if((board[i][0].equals(board[i][1])) && (board[i][1].equals(board[i][2]))){
+                return true;
+            }
+        }
+
+        /* checking through columns */
+        for(int j=0; j<=2; j++) {
+            if ((board[0][j].equals(board[1][j])) && (board[1][j].equals(board[2][j]))) {
+                return true;
+            }
+        }
+        /* checking through diagonal */
+        if((board[0][0].equals(board[1][1])) && (board[1][1].equals(board[2][2]))){
+            return true;
+        } else {
+            return (board[2][0].equals(board[1][1])) && (board[1][1].equals(board[0][2]));
+        }
     }
 }
