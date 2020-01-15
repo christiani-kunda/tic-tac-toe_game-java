@@ -9,6 +9,7 @@ import java.util.Scanner;
  */
 public class TicTacToe {
 
+    private static String winner;
     /**
      * The entry point of application.
      *
@@ -40,8 +41,15 @@ public class TicTacToe {
         }
 
         /* mocking playing - making moves */
-        play(board,humanPlayer,computerPlayer);
-        printBoard(board);
+        while (!checkWins(board) && stillHasMoves(board)) {
+            play(board, humanPlayer, computerPlayer);
+            printBoard(board);
+        }
+        if(checkWins(board)){
+            System.out.printf("payer %s won", winner);
+        } else {
+            System.out.print("DRAW");
+        }
     }
 
     /**
@@ -78,9 +86,9 @@ public class TicTacToe {
     private static void play(String [][] board, String humanPlayer, String computerPlayer){
         System.out.print("\nPick a position to play at: ");
         Scanner scan = new Scanner(System.in);
-        Integer humanChoice = scan.nextInt();
+        int humanChoice = scan.nextInt();
         while(humanChoice<1 || humanChoice > 9) {
-            System.out.println("The choosen position does not exist. please choose between 1 and 9");
+            System.out.println("The chosen position does not exist. please choose between 1 and 9");
             scan = new Scanner(System.in);
             humanChoice = scan.nextInt();
         }
@@ -169,6 +177,7 @@ public class TicTacToe {
         /* checking through rows */
         for(int i=0; i<=2; i++){
             if((board[i][0].equals(board[i][1])) && (board[i][1].equals(board[i][2]))){
+                winner = board[i][0];
                 return true;
             }
         }
@@ -176,14 +185,18 @@ public class TicTacToe {
         /* checking through columns */
         for(int j=0; j<=2; j++) {
             if ((board[0][j].equals(board[1][j])) && (board[1][j].equals(board[2][j]))) {
+                winner = board[0][j];
                 return true;
             }
         }
         /* checking through diagonal */
         if((board[0][0].equals(board[1][1])) && (board[1][1].equals(board[2][2]))){
+            winner = board[0][0];
             return true;
-        } else {
-            return (board[2][0].equals(board[1][1])) && (board[1][1].equals(board[0][2]));
+        } else if((board[2][0].equals(board[1][1])) && (board[1][1].equals(board[0][2]))) {
+            winner = board[1][1];
+            return true;
         }
+        return false;
     }
 }
