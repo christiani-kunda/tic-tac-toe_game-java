@@ -11,6 +11,23 @@ public class TicTacToe {
 
         /* printing the board*/
         printBoard(board);
+
+        /* Getting the user's choice of player */
+        System.out.print("Choose between 0 and X players the you are going to use: ");
+        Scanner scan = new Scanner(System.in);
+        String humanPlayer = scan.next().toUpperCase();
+        String computerPlayer;
+        while(humanPlayer.isEmpty() || (!humanPlayer.equalsIgnoreCase("O") && !humanPlayer.equalsIgnoreCase("X"))){
+            System.out.print("Choose properly between 0 and X players the you are going to use: ");
+            humanPlayer = scan.next().toUpperCase();
+        }
+        if(humanPlayer.equalsIgnoreCase("O")){
+            System.out.print("You are going to play with: " + humanPlayer);
+            computerPlayer = "X";
+        } else {
+            System.out.print("You are going to play with: X");
+            computerPlayer = "O";
+        }
     }
 
     /* A method that prints the board */
@@ -30,5 +47,7 @@ public class TicTacToe {
             System.out.print("\n-  -  -  -  -  -\n");
         }
     }
+
+
 
 }
