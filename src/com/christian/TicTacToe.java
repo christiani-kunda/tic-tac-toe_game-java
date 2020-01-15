@@ -28,6 +28,10 @@ public class TicTacToe {
             System.out.print("You are going to play with: X");
             computerPlayer = "O";
         }
+
+        /* mocking playing - making moves */
+        play(board,humanPlayer,computerPlayer);
+        printBoard(board);
     }
 
     /* A method that prints the board */
@@ -48,6 +52,61 @@ public class TicTacToe {
         }
     }
 
+
+    private static void play(String [][] board, String humanPlayer, String computerPlayer){
+        System.out.print("\nPick a position to play at: ");
+        Scanner scan = new Scanner(System.in);
+        Integer humanChoice = scan.nextInt();
+        while(humanChoice<1 || humanChoice > 9) {
+            System.out.println("The choosen position does not exist. please choose between 1 and 9");
+            scan = new Scanner(System.in);
+            humanChoice = scan.nextInt();
+        }
+
+        /* put the human choice in the board */
+        putDataInTheBoard(board,humanChoice,humanPlayer);
+
+        // make the computation and play -- for now let's use five
+        Integer computerChoice = 5;
+
+        /* putting the computer choice in the board*/
+        putDataInTheBoard(board, computerChoice, computerPlayer);
+    }
+
+    /* inserting player's moves into the board. since the board is small, i decided to not make a loop */
+    private static void putDataInTheBoard(String [][] board, Integer position, String player){
+        switch (position){
+            case 1:
+                board[0][0] = player;
+                break;
+            case 2:
+                board[0][1] = player;
+                break;
+            case 3:
+                board[0][2] = player;
+                break;
+            case 4:
+                board[1][0] = player;
+                break;
+            case 5:
+                board[1][1] = player;
+                break;
+            case 6:
+                board[1][2] = player;
+                break;
+            case 7:
+                board[2][0] = player;
+                break;
+            case 8:
+                board[2][1] = player;
+                break;
+            case 9:
+                board[2][2] = player;
+                break;
+            default:
+                break;
+        }
+    }
 
 
 }
