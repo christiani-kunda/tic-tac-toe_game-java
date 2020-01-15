@@ -4,6 +4,7 @@
 src/main/resources/application.properties
 generated/
 target/
+out/
 
 .flattened-pom.xml
 
