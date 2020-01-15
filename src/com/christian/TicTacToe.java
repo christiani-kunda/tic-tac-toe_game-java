@@ -108,5 +108,17 @@ public class TicTacToe {
         }
     }
 
+    /* This method if there are still possible moves in the board */
+    private static boolean stillHasMoves(String [][] board){
 
+        for(int i=0; i<=2; i++){
+            for(int j=0; j<=2; j++){
+                String value = board[i][j];
+                if(!value.equalsIgnoreCase("O") && !value.equalsIgnoreCase("X")) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
