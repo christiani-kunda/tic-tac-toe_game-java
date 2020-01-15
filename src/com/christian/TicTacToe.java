@@ -88,11 +88,14 @@ public class TicTacToe {
         /* put the human choice in the board */
         putDataInTheBoard(board,humanChoice,humanPlayer);
 
-        // make the computation and play -- for now let's use five
-        Integer computerChoice = 5;
+        /* Check if there is no win and there still moves */
+        if(!checkWins(board) && stillHasMoves(board)) {
+            // make the computation and play -- for now let's use five
+            Integer computerChoice = 5;
 
-        /* putting the computer choice in the board*/
-        putDataInTheBoard(board, computerChoice, computerPlayer);
+            /* putting the computer choice in the board*/
+            putDataInTheBoard(board, computerChoice, computerPlayer);
+        }
     }
 
     /**
