@@ -1,0 +1,24 @@
+# Add any directories, files, or patterns you don't want to be tracked by version control
+*.class
+*.log
+src/main/resources/application.properties
+generated/
+target/
+
+.flattened-pom.xml
+
+# Intellij specs
+.idea/
+.idea_modules/
+*.iml
+
+# Eclipse
+.settings/
+.project
+.classpath
+/bin/
+
+
+config/application-context.xml
+config/application.properties
+config/logback.xml
