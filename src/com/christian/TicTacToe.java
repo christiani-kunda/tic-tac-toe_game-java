@@ -9,7 +9,11 @@ import java.util.Scanner;
  */
 public class TicTacToe {
 
+    /**
+     * The constant winner.
+     */
     private static String winner;
+
     /**
      * The entry point of application.
      *
@@ -198,5 +202,20 @@ public class TicTacToe {
             return true;
         }
         return false;
+    }
+
+    /**
+     * Gets position from a 2d array given the number of columns and the coordinates.
+     *
+     * @param i               the
+     * @param j               the j
+     * @param numberOfColumns the number of columns
+     * @return the position
+     */
+    private static int getPosition(int i, int j, int numberOfColumns) {
+        if(j<numberOfColumns){
+            return i*numberOfColumns + j + 1;
+        }
+        return -1;
     }
 }
