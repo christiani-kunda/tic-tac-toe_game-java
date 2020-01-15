@@ -218,4 +218,15 @@ public class TicTacToe {
         }
         return -1;
     }
+
+    /**
+     * Finding best move int.
+     *
+     * @param board          the board
+     * @param computerPlayer the computer player
+     * @return the int
+     */
+    private static int findingBestMove(String [][] board, String computerPlayer) {
+        return -1;
+    }
 }
