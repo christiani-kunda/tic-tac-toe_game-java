@@ -15,6 +15,16 @@ public class TicTacToe {
     private static String winner;
 
     /**
+     * The constant humanPlayer.
+     */
+    private static String humanPlayer;
+
+    /**
+     * The constant computerPlayer.
+     */
+    private static String computerPlayer;
+
+    /**
      * The entry point of application.
      *
      * @param args the input arguments
@@ -30,8 +40,7 @@ public class TicTacToe {
         /* Getting the user's choice of player */
         System.out.print("Choose between 0 and X players the you are going to use: ");
         Scanner scan = new Scanner(System.in);
-        String humanPlayer = scan.next().toUpperCase();
-        String computerPlayer;
+        humanPlayer = scan.next().toUpperCase();
         while(humanPlayer.isEmpty() || (!humanPlayer.equalsIgnoreCase("O") && !humanPlayer.equalsIgnoreCase("X"))){
             System.out.print("Choose properly between 0 and X players the you are going to use: ");
             humanPlayer = scan.next().toUpperCase();
@@ -176,13 +185,17 @@ public class TicTacToe {
      * @param board the board
      * @return the boolean
      */
-    private static boolean checkWins(String [][] board){
+    private static int computeTheScore(String [][] board){
 
         /* checking through rows */
         for(int i=0; i<=2; i++){
             if((board[i][0].equals(board[i][1])) && (board[i][1].equals(board[i][2]))){
                 winner = board[i][0];
-                return true;
+                if(winner.equalsIgnoreCase(computerPlayer)) {
+                    return 10;
+                } else {
+                    return -10;
+                }
             }
         }
 
@@ -190,18 +203,33 @@ public class TicTacToe {
         for(int j=0; j<=2; j++) {
             if ((board[0][j].equals(board[1][j])) && (board[1][j].equals(board[2][j]))) {
                 winner = board[0][j];
-                return true;
+                if(winner.equalsIgnoreCase(computerPlayer)) {
+                    return 10;
+                } else {
+                    return -10;
+                }
             }
         }
         /* checking through diagonal */
         if((board[0][0].equals(board[1][1])) && (board[1][1].equals(board[2][2]))){
             winner = board[0][0];
-            return true;
+            if(winner.equalsIgnoreCase(computerPlayer)) {
+                return 10;
+            } else {
+                return -10;
+            }
         } else if((board[2][0].equals(board[1][1])) && (board[1][1].equals(board[0][2]))) {
             winner = board[1][1];
-            return true;
+            if(winner.equalsIgnoreCase(computerPlayer)) {
+                return 10;
+            } else {
+                return -10;
+            }
         }
-        return false;
+        if(!stillHasMoves(board)){
+            return 0;
+        }
+        return -10000000;
     }
 
     /**
@@ -222,21 +250,85 @@ public class TicTacToe {
     /**
      * Finding best move available starting with the first one..
      *
-     * @param board          the board
+     * @param board the board
      * @return the int
      */
     private static int findingBestMove(String [][] board) {
-
+        int x = 0;
+        int y = 0;
+        int bestScore = -10000;
         for(int i=0; i<=2; i++){
             for(int j=0; j<=2; j++){
                 String value = board[i][j];
                 /* Checking if the spot is available */
                 if(!value.equalsIgnoreCase("O") && !value.equalsIgnoreCase("X")) {
-                    return getPosition(i,j,board.length);
+                    board[i][j] = computerPlayer;
+                    int score = minMaxPosition(board,false);
+                    if(bestScore < score){
+                        bestScore = score;
+                        x=i;
+                        y=j;
+                    }
+                    board[i][j] = value;
                 }
             }
         }
-        return 1;
+        return getPosition(x,y,board.length);
     }
 
+    /**
+     * Implementing the min max algorithm to find the optimum position for the ai
+     *
+     * @param board        the board
+     * @param isMaximizing the is maximizing
+     * @return the int
+     */
+    /* .*/
+    private static int minMaxPosition(String [][] board, boolean isMaximizing) {
+        if(checkWins(board) || !stillHasMoves(board)){
+            return computeTheScore(board);
+        }
+
+        if(isMaximizing) {
+            int bestScore = -10000;
+            for (int i = 0; i <= 2; i++) {
+                for (int j = 0; j <= 2; j++) {
+                    String value = board[i][j];
+                    /* Checking if the spot is available */
+                    if (!value.equalsIgnoreCase("O") && !value.equalsIgnoreCase("X")) {
+                        board[i][j] = computerPlayer;
+                        int score = minMaxPosition(board,false);
+                        bestScore = Math.max(bestScore,score);
+                        board[i][j] = value;
+                    }
+                }
+            }
+            return bestScore;
+        } else {
+            int bestScore = 10000;
+            for (int i = 0; i <= 2; i++) {
+                for (int j = 0; j <= 2; j++) {
+                    String value = board[i][j];
+                    /* Checking if the spot is available */
+                    if (!value.equalsIgnoreCase("O") && !value.equalsIgnoreCase("X")) {
+                        board[i][j] = humanPlayer;
+                        int score = minMaxPosition(board,true);
+                        bestScore = Math.min(bestScore,score);
+                        board[i][j] = value;
+                    }
+                }
+            }
+            return bestScore;
+        }
+    }
+
+    /**
+     * Check wins boolean.
+     *
+     * @param board the board
+     * @return the boolean
+     */
+    private static boolean checkWins(String [][] board) {
+        return computeTheScore(board) == 10 || computeTheScore(board) == -10;
+    }
 }
