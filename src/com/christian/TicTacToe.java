@@ -102,8 +102,8 @@ public class TicTacToe {
 
         /* Check if there is no win and there still moves */
         if(!checkWins(board) && stillHasMoves(board)) {
-            // make the computation and play -- for now let's use five
-            Integer computerChoice = 5;
+            // make the computation and play -- the ai will pick the first position available starting from 1.
+            Integer computerChoice = findingBestMove(board);
 
             /* putting the computer choice in the board*/
             putDataInTheBoard(board, computerChoice, computerPlayer);
@@ -220,13 +220,23 @@ public class TicTacToe {
     }
 
     /**
-     * Finding best move int.
+     * Finding best move available starting with the first one..
      *
      * @param board          the board
-     * @param computerPlayer the computer player
      * @return the int
      */
-    private static int findingBestMove(String [][] board, String computerPlayer) {
-        return -1;
+    private static int findingBestMove(String [][] board) {
+
+        for(int i=0; i<=2; i++){
+            for(int j=0; j<=2; j++){
+                String value = board[i][j];
+                /* Checking if the spot is available */
+                if(!value.equalsIgnoreCase("O") && !value.equalsIgnoreCase("X")) {
+                    return getPosition(i,j,board.length);
+                }
+            }
+        }
+        return 1;
     }
+
 }
