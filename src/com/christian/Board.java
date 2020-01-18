@@ -89,18 +89,18 @@ public class Board {
 
 		/* checking through rows */
 		Integer rowWin = checkRowWins(computerPlayer);
-		if (rowWin != null) {
+		if (rowWin != -1) {
 			return rowWin;
 		}
 
 		/* checking through columns */
 		Integer columnWin = checkColumnWins(computerPlayer);
-		if (columnWin != null) {
+		if (columnWin != -1) {
 			return columnWin;
 		}
 		/* checking through diagonal */
 		Integer diagonalWin = checkDiagonalWins(computerPlayer);
-		if (diagonalWin != null) {
+		if (diagonalWin != -1) {
 			return diagonalWin;
 		}
 
@@ -132,7 +132,7 @@ public class Board {
 				return -10;
 			}
 		}
-		return null;
+		return -1;
 	}
 
 	/**
@@ -152,7 +152,7 @@ public class Board {
 				}
 			}
 		}
-		return null;
+		return -1;
 	}
 
 	/**
@@ -172,7 +172,7 @@ public class Board {
 				}
 			}
 		}
-		return null;
+		return -1;
 	}
 
 
@@ -200,9 +200,8 @@ public class Board {
 	/* A method that prints the board */
 	public void printBoard(){
 		/* Checking if the board has been initialized*/
-		if(boardValues == null) {
-			System.out.print("The board does not exist");
-			System.exit(1);
+		if(boardValues == null || boardValues.length == 0) {
+			this.boardValues = new String[][]{{"1","2","3"},{"4","5","6"},{"7","8","9"}};
 		}
 
         /* Looping through the board positions printing the content. If there no plays it should display position
