@@ -10,27 +10,39 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 
+/**
+ * The type Board test.
+ */
 @RunWith(BlockJUnit4ClassRunner.class)
 public class BoardTest {
 
+	/**
+	 * Test get position.
+	 */
 	@Test
-	public void getPosition() {
+	public void testGetPosition() {
 
 		Board board = new Board();
 		int position = board.getPosition(0, 1,3);
 		assertEquals(position,2);
 	}
 
+	/**
+	 * Test get position with column coordinates greater than column number.
+	 */
 	@Test
-	public void getPositionWithColumnCoordinatesGreaterThanColumnNumber() {
+	public void testGetPositionWithColumnCoordinatesGreaterThanColumnNumber() {
 
 		Board board = new Board();
 		int position = board.getPosition(0, 3,3);
 		assertEquals(position,-1);
 	}
 
+	/**
+	 * Test still has moves.
+	 */
 	@Test
-	public void stillHasMoves() {
+	public void testStillHasMoves() {
 		Board board = new Board();
 		String [][] boardValues= {{"1","2","3"},{"4","5","6"},{"7","8","9"}};
 		board.setBoard(boardValues);
@@ -38,8 +50,11 @@ public class BoardTest {
 		assertTrue(hasMoves);
 	}
 
+	/**
+	 * Test still has moves negative.
+	 */
 	@Test
-	public void stillHasMovesNegative() {
+	public void testStillHasMovesNegative() {
 		Board board = new Board();
 		String [][] boardValues= {{"O","O","X"},{"X","X","O"},{"O","O","X"}};
 		board.setBoard(boardValues);
@@ -47,8 +62,11 @@ public class BoardTest {
 		assertFalse(hasMoves);
 	}
 
+	/**
+	 * Test check horizontal wins when the computer is x.
+	 */
 	@Test
-	public void checkHorizontalWinsWhenTheComputerIsX() {
+	public void testCheckHorizontalWinsWhenTheComputerIsX() {
 		Board board = new Board();
 		String [][] boardValues= {{"O","O","X"},{"X","X","X"},{"O","O","X"}};
 		board.setBoard(boardValues);
@@ -56,8 +74,11 @@ public class BoardTest {
 		assertTrue(won);
 	}
 
+	/**
+	 * Test check horizontal wins when the computer is o.
+	 */
 	@Test
-	public void checkHorizontalWinsWhenTheComputerIsO() {
+	public void testCheckHorizontalWinsWhenTheComputerIsO() {
 		Board board = new Board();
 		String [][] boardValues= {{"O","O","X"},{"X","X","X"},{"O","O","X"}};
 		board.setBoard(boardValues);
@@ -65,8 +86,11 @@ public class BoardTest {
 		assertTrue(won);
 	}
 
+	/**
+	 * Test check vertical wins when the computer is x.
+	 */
 	@Test
-	public void checkVerticalWinsWhenTheComputerIsX() {
+	public void testCheckVerticalWinsWhenTheComputerIsX() {
 		Board board = new Board();
 		String [][] boardValues= {{"O","O","X"},{"X","O","X"},{"O","X","X"}};
 		board.setBoard(boardValues);
@@ -74,8 +98,11 @@ public class BoardTest {
 		assertTrue(won);
 	}
 
+	/**
+	 * Test check vertical wins when the computer is o.
+	 */
 	@Test
-	public void checkVerticalWinsWhenTheComputerIsO() {
+	public void testCheckVerticalWinsWhenTheComputerIsO() {
 		Board board = new Board();
 		String [][] boardValues= {{"O","O","X"},{"X","O","X"},{"O","X","X"}};
 		board.setBoard(boardValues);
@@ -83,8 +110,11 @@ public class BoardTest {
 		assertTrue(won);
 	}
 
+	/**
+	 * Test check diagonal wins when player is x.
+	 */
 	@Test
-	public void checkDiagonalWinsWhenPlayerIsX() {
+	public void testCheckDiagonalWinsWhenPlayerIsX() {
 		Board board = new Board();
 		String [][] boardValues= {{"O","O","X"},{"O","X","X"},{"X","O","O"}};
 		board.setBoard(boardValues);
@@ -92,8 +122,11 @@ public class BoardTest {
 		assertTrue(won);
 	}
 
+	/**
+	 * Test check diagonal wins when player is o.
+	 */
 	@Test
-	public void checkDiagonalWinsWhenPlayerIsO() {
+	public void testCheckDiagonalWinsWhenPlayerIsO() {
 		Board board = new Board();
 		String [][] boardValues= {{"O","O","X"},{"O","X","X"},{"X","O","O"}};
 		board.setBoard(boardValues);
@@ -101,8 +134,11 @@ public class BoardTest {
 		assertTrue(won);
 	}
 
+	/**
+	 * Test check reverse diagonal wins when player is x.
+	 */
 	@Test
-	public void checkReverseDiagonalWinsWhenPlayerIsX() {
+	public void testCheckReverseDiagonalWinsWhenPlayerIsX() {
 		Board board = new Board();
 		String [][] boardValues= {{"X","O","O"},{"O","X","X"},{"O","O","X"}};
 		board.setBoard(boardValues);
@@ -110,8 +146,11 @@ public class BoardTest {
 		assertTrue(won);
 	}
 
+	/**
+	 * Test check reverse diagonal wins when player is o.
+	 */
 	@Test
-	public void checkReverseDiagonalWinsWhenPlayerIsO() {
+	public void testCheckReverseDiagonalWinsWhenPlayerIsO() {
 		Board board = new Board();
 		String [][] boardValues= {{"X","O","O"},{"O","X","X"},{"O","O","X"}};
 		board.setBoard(boardValues);
@@ -119,8 +158,11 @@ public class BoardTest {
 		assertTrue(won);
 	}
 
+	/**
+	 * Test check draw.
+	 */
 	@Test
-	public void checkDraw() {
+	public void testCheckDraw() {
 		Board board = new Board();
 		String [][] boardValues= {{"O","X","X"},{"X","X","O"},{"O","O","X"}};
 		board.setBoard(boardValues);
@@ -128,8 +170,11 @@ public class BoardTest {
 		assertFalse(won);
 	}
 
+	/**
+	 * Test check wins negative.
+	 */
 	@Test
-	public void checkWinsNegative() {
+	public void testCheckWinsNegative() {
 		Board board = new Board();
 		String [][] boardValues= {{"O","O","3"},{"X","X","O"},{"O","O","X"}};
 		board.setBoard(boardValues);
@@ -137,8 +182,11 @@ public class BoardTest {
 		assertFalse(won);
 	}
 
+	/**
+	 * Test check if spot is available.
+	 */
 	@Test
-	public void checkIfSpotIsAvailable() {
+	public void testCheckIfSpotIsAvailable() {
 		Board board = new Board();
 		String [][] boardValues= {{"O","O","3"},{"X","X","X"},{"O","O","X"}};
 		board.setBoard(boardValues);
@@ -146,8 +194,11 @@ public class BoardTest {
 		assertTrue(positionIsAvailable);
 	}
 
+	/**
+	 * Test check if spot is available negative.
+	 */
 	@Test
-	public void checkIfSpotIsAvailableNidegative() {
+	public void testCheckIfSpotIsAvailableNegative() {
 		Board board = new Board();
 		String [][] boardValues= {{"O","O","3"},{"X","X","X"},{"O","O","X"}};
 		board.setBoard(boardValues);
@@ -155,8 +206,11 @@ public class BoardTest {
 		assertFalse(positionIsAvailable);
 	}
 
+	/**
+	 * Test compute the score.
+	 */
 	@Test
-	public void computeTheScore() {
+	public void testComputeTheScore() {
 		Board board = new Board();
 		String [][] boardValues= {{"O","O","3"},{"X","X","X"},{"O","O","X"}};
 		board.setBoard(boardValues);
@@ -164,14 +218,9 @@ public class BoardTest {
 		assertEquals(score,10);
 	}
 
-	@Test
-	public void getBoard() {
-	}
-
-	@Test
-	public void setBoard() {
-	}
-
+	/**
+	 * Print board.
+	 */
 	@Test
 	public void printBoard() {
 		Board board = new Board();
@@ -180,13 +229,13 @@ public class BoardTest {
 		board.printBoard();
 	}
 
+	/**
+	 * Print board negative.
+	 */
 	@Test
 	public void printBoardNegative() {
 		Board board = new Board();
 		board.printBoard();
 	}
 
-	@Test
-	public void getWinner() {
-	}
 }
