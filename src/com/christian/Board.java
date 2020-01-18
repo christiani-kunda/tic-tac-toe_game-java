@@ -142,7 +142,7 @@ public class Board {
 	 * @return the integer
 	 */
 	private Integer checkColumnWins(String computerPlayer) {
-		for(int j=0; j<=2; j++) {
+		for(int j=0; j<boardValues.length; j++) {
 			if ((boardValues[0][j].equals(boardValues[1][j])) && (boardValues[1][j].equals(boardValues[2][j]))) {
 				this.winner = boardValues[0][j];
 				if(winner.equalsIgnoreCase(computerPlayer)) {
@@ -162,7 +162,7 @@ public class Board {
 	 * @return the integer
 	 */
 	private Integer checkRowWins(String computerPlayer) {
-		for(int i=0; i<=2; i++){
+		for(int i=0; i<boardValues.length; i++){
 			if((boardValues[i][0].equals(boardValues[i][1])) && (boardValues[i][1].equals(boardValues[i][2]))){
 				this.winner = boardValues[i][0];
 				if(winner.equalsIgnoreCase(computerPlayer)) {
@@ -206,8 +206,8 @@ public class Board {
 
         /* Looping through the board positions printing the content. If there no plays it should display position
         numbers */
-		for(int i=0; i<=2; i++){
-			for(int j=0; j<=2; j++){
+		for(int i=0; i<boardValues.length; i++){
+			for(int j=0; j<boardValues.length; j++){
 				System.out.print(boardValues[i][j] + "  |  ");
 			}
 			System.out.print("\n-  -  -  -  -  -\n");
