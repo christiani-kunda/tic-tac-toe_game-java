@@ -12,6 +12,9 @@ public class Board {
 	 */
 	private String [][] boardValues = {};
 
+	/**
+	 * The Winner.
+	 */
 	private String  winner;
 
 	/**
@@ -58,6 +61,12 @@ public class Board {
 	}
 
 
+	/**
+	 * Check if spot is available boolean.
+	 *
+	 * @param position the position
+	 * @return the boolean
+	 */
 	public boolean checkIfSpotIsAvailable(int position) {
 		for(int i=0; i<boardValues.length; i++){
 			for(int j=0; j<boardValues.length; j++){
@@ -69,6 +78,7 @@ public class Board {
 		}
 		return false;
 	}
+
 	/**
 	 * This function checks if there is a win in the board.
 	 *
@@ -100,6 +110,12 @@ public class Board {
 		return -10000000;
 	}
 
+	/**
+	 * Check diagonal wins integer.
+	 *
+	 * @param computerPlayer the computer player
+	 * @return the integer
+	 */
 	private Integer checkDiagonalWins(String computerPlayer) {
 		if((boardValues[0][0].equals(boardValues[1][1])) && (boardValues[1][1].equals(boardValues[2][2]))){
 			this.winner = boardValues[0][0];
@@ -119,6 +135,12 @@ public class Board {
 		return null;
 	}
 
+	/**
+	 * Check column wins integer.
+	 *
+	 * @param computerPlayer the computer player
+	 * @return the integer
+	 */
 	private Integer checkColumnWins(String computerPlayer) {
 		for(int j=0; j<=2; j++) {
 			if ((boardValues[0][j].equals(boardValues[1][j])) && (boardValues[1][j].equals(boardValues[2][j]))) {
@@ -133,6 +155,12 @@ public class Board {
 		return null;
 	}
 
+	/**
+	 * Check row wins integer.
+	 *
+	 * @param computerPlayer the computer player
+	 * @return the integer
+	 */
 	private Integer checkRowWins(String computerPlayer) {
 		for(int i=0; i<=2; i++){
 			if((boardValues[i][0].equals(boardValues[i][1])) && (boardValues[i][1].equals(boardValues[i][2]))){
@@ -166,6 +194,9 @@ public class Board {
 		this.boardValues = board;
 	}
 
+	/**
+	 * Print board.
+	 */
 	/* A method that prints the board */
 	public void printBoard(){
 		/* Checking if the board has been initialized*/
