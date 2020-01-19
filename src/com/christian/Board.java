@@ -222,4 +222,22 @@ public class Board {
 	public String getWinner() {
 		return winner;
 	}
+
+
+	/**
+	 * inserting player's moves into the board.
+	 *
+	 * @param position the position
+	 * @param player   the player
+	 */
+	public void putDataInTheBoard(Integer position, String player){
+		for(int i=0; i<boardValues.length; i++){
+			for(int j=0; j<boardValues.length; j++){
+				String value = boardValues[i][j];
+				if(value.equalsIgnoreCase(String.valueOf(position))) {
+					boardValues[i][j] = player;
+				}
+			}
+		}
+	}
 }

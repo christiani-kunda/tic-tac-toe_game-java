@@ -72,7 +72,7 @@ public class TicTacToe {
         }
 
         /* put the human choice in the board */
-        putDataInTheBoard(board,humanChoice,humanPlayer);
+        board.putDataInTheBoard(humanChoice,humanPlayer);
 
         /* Check if there is no win and there still moves */
         if(!board.checkWins(computerPlayer) && board.stillHasMoves()) {
@@ -81,48 +81,7 @@ public class TicTacToe {
             Integer computerChoice = minMax.findingBestMove(board, computerPlayer, humanPlayer);
 
             /* putting the computer choice in the board*/
-            putDataInTheBoard(board, computerChoice, computerPlayer);
-        }
-    }
-
-    /**
-     * inserting player's moves into the board. since the board is small, i decided to not make a loop.
-     *
-     * @param board    the board
-     * @param position the position
-     * @param player   the player
-     */
-    private void putDataInTheBoard(Board board, Integer position, String player){
-        switch (position){
-            case 1:
-                board.getBoard()[0][0] = player;
-                break;
-            case 2:
-                board.getBoard()[0][1] = player;
-                break;
-            case 3:
-                board.getBoard()[0][2] = player;
-                break;
-            case 4:
-                board.getBoard()[1][0] = player;
-                break;
-            case 5:
-                board.getBoard()[1][1] = player;
-                break;
-            case 6:
-                board.getBoard()[1][2] = player;
-                break;
-            case 7:
-                board.getBoard()[2][0] = player;
-                break;
-            case 8:
-                board.getBoard()[2][1] = player;
-                break;
-            case 9:
-                board.getBoard()[2][2] = player;
-                break;
-            default:
-                break;
+            board.putDataInTheBoard(computerChoice, computerPlayer);
         }
     }
 }
