@@ -117,16 +117,39 @@ public class Board {
 	 * @return the integer
 	 */
 	private Integer checkDiagonalWins(String computerPlayer) {
-		if((boardValues[0][0].equals(boardValues[1][1])) && (boardValues[1][1].equals(boardValues[2][2]))){
+		boolean thereIsWin = true;
+		String value = boardValues[0][0];
+		for(int i=0; i<boardValues.length; i++){
+			for(int j=0; j<boardValues.length; j++){
+				if( i == j && !value.equalsIgnoreCase(boardValues[i][j])) {
+					thereIsWin = false;
+					break;
+				}
+			}
+		}
+		if (thereIsWin) {
 			this.winner = boardValues[0][0];
-			if(winner.equalsIgnoreCase(computerPlayer)) {
+			if (winner.equalsIgnoreCase(computerPlayer)) {
 				return 10;
 			} else {
 				return -10;
 			}
-		} else if((boardValues[2][0].equals(boardValues[1][1])) && (boardValues[1][1].equals(boardValues[0][2]))) {
-			this.winner = boardValues[1][1];
-			if(winner.equalsIgnoreCase(computerPlayer)) {
+		}
+
+
+		thereIsWin = true;
+		value = boardValues[boardValues.length-1][0];
+		for(int i=0; i<boardValues.length; i++){
+			for(int j=0; j<boardValues.length; j++){
+				if( ((i+j) == boardValues.length-1) && !value.equalsIgnoreCase(boardValues[i][j])) {
+					thereIsWin = false;
+					break;
+				}
+			}
+		}
+		if (thereIsWin) {
+			this.winner = value;
+			if (winner.equalsIgnoreCase(computerPlayer)) {
 				return 10;
 			} else {
 				return -10;
@@ -142,10 +165,18 @@ public class Board {
 	 * @return the integer
 	 */
 	private Integer checkColumnWins(String computerPlayer) {
-		for(int j=0; j<boardValues.length; j++) {
-			if ((boardValues[0][j].equals(boardValues[1][j])) && (boardValues[1][j].equals(boardValues[2][j]))) {
+		for (int j = 0; j < boardValues.length; j++) {
+			boolean thereIsWin = true;
+			String value = boardValues[0][j];
+			for (String[] boardValue : boardValues) {
+				if (!boardValue[j].equals(value)) {
+					thereIsWin = false;
+					break;
+				}
+			}
+			if (thereIsWin) {
 				this.winner = boardValues[0][j];
-				if(winner.equalsIgnoreCase(computerPlayer)) {
+				if (winner.equalsIgnoreCase(computerPlayer)) {
 					return 10;
 				} else {
 					return -10;
@@ -162,15 +193,24 @@ public class Board {
 	 * @return the integer
 	 */
 	private Integer checkRowWins(String computerPlayer) {
-		for(int i=0; i<boardValues.length; i++){
-			if((boardValues[i][0].equals(boardValues[i][1])) && (boardValues[i][1].equals(boardValues[i][2]))){
-				this.winner = boardValues[i][0];
-				if(winner.equalsIgnoreCase(computerPlayer)) {
+		for (String[] boardValue : boardValues) {
+			boolean thereIsWin = true;
+			String value = boardValue[0];
+			for (int j = 0; j < boardValues.length; j++) {
+				if (!boardValue[j].equals(value)) {
+					thereIsWin = false;
+					break;
+				}
+			}
+			if (thereIsWin) {
+				this.winner = boardValue[0];
+				if (winner.equalsIgnoreCase(computerPlayer)) {
 					return 10;
 				} else {
 					return -10;
 				}
 			}
+
 		}
 		return -1;
 	}
@@ -206,9 +246,9 @@ public class Board {
 
         /* Looping through the board positions printing the content. If there no plays it should display position
         numbers */
-		for(int i=0; i<boardValues.length; i++){
-			for(int j=0; j<boardValues.length; j++){
-				System.out.print(boardValues[i][j] + "  |  ");
+		for (String[] boardValue : boardValues) {
+			for (int j = 0; j < boardValues.length; j++) {
+				System.out.print(boardValue[j] + "  |  ");
 			}
 			System.out.print("\n-  -  -  -  -  -\n");
 		}
