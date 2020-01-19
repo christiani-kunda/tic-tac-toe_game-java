@@ -1,4 +1,6 @@
-package com.christian;
+package main.java.com.christian;
+
+import main.java.com.christian.tictactoe.TicTacToe;
 
 /**
  * The Class Main.

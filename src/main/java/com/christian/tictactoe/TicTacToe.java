@@ -1,4 +1,4 @@
-package com.christian;
+package main.java.com.christian.tictactoe;
 
 import java.io.InputStream;
 import java.util.Scanner;

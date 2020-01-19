@@ -1,6 +1,6 @@
-package tests;
+package test.java.com.christian.tictactoe;
 
-import com.christian.Board;
+import main.java.com.christian.tictactoe.Board;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
