@@ -222,7 +222,7 @@ public class BoardTest {
 	 * Print board.
 	 */
 	@Test
-	public void printBoard() {
+	public void testPrintBoard() {
 		Board board = new Board();
 		String [][] boardValues= {{"O","O","3"},{"X","X","X"},{"O","O","X"}};
 		board.setBoard(boardValues);
@@ -233,9 +233,17 @@ public class BoardTest {
 	 * Print board negative.
 	 */
 	@Test
-	public void printBoardNegative() {
+	public void testPrintBoardNegative() {
 		Board board = new Board();
 		board.printBoard();
 	}
 
+	@Test
+	public void testPuttingDataInTheBoard() {
+		Board board = new Board();
+		String [][] boardValues= {{"O","O","3"},{"X","X","X"},{"O","O","X"}};
+		board.setBoard(boardValues);
+		board.putDataInTheBoard(3,"X");
+		assertEquals(board.getBoard()[0][2],"X");
+	}
 }

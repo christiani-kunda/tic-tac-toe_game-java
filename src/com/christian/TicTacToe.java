@@ -1,5 +1,6 @@
 package com.christian;
 
+import java.io.InputStream;
 import java.util.Scanner;
 
 /**
@@ -12,7 +13,7 @@ public class TicTacToe {
     /**
      * The entry point of application.
      */
-    public void init() {
+    public void init(InputStream in) {
 
         /* Create player holders */
         String humanPlayer;
@@ -27,7 +28,7 @@ public class TicTacToe {
 
         /* Getting the user's choice of player */
         System.out.print("Choose between 0 and X players the you are going to use: ");
-        Scanner scan = new Scanner(System.in);
+        Scanner scan = new Scanner(in);
         humanPlayer = scan.next().toUpperCase();
         while(humanPlayer.isEmpty() || (!humanPlayer.equalsIgnoreCase("O") && !humanPlayer.equalsIgnoreCase("X"))){
             System.out.print("Choose properly between 0 and X players the you are going to use: ");
@@ -43,7 +44,7 @@ public class TicTacToe {
 
         /* mocking playing - making moves */
         while (!board.checkWins(computerPlayer) && board.stillHasMoves()) {
-            play(board, humanPlayer, computerPlayer);
+            play(board, humanPlayer, computerPlayer, in);
             board.printBoard();
         }
         if(board.checkWins(computerPlayer)){
@@ -60,9 +61,9 @@ public class TicTacToe {
      * @param humanPlayer    the human player
      * @param computerPlayer the computer player
      */
-    private void play(Board board, String humanPlayer, String computerPlayer){
+    public void play(Board board, String humanPlayer, String computerPlayer, InputStream in){
         System.out.print("\nPick a position to play at: ");
-        Scanner scan = new Scanner(System.in);
+        Scanner scan = new Scanner(in);
         int humanChoice = scan.nextInt();
         while(!board.checkIfSpotIsAvailable(humanChoice)) {
             System.out.println("The chosen position has been taken or does not exist");
