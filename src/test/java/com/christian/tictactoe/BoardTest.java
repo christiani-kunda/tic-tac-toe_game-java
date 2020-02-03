@@ -1,6 +1,5 @@
-package test.java.com.christian.tictactoe;
+package com.christian.tictactoe;
 
-import main.java.com.christian.tictactoe.Board;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
@@ -216,26 +215,6 @@ public class BoardTest {
 		board.setBoard(boardValues);
 		int score = board.computeTheScore("X");
 		assertEquals(score,10);
-	}
-
-	/**
-	 * Print board.
-	 */
-	@Test
-	public void testPrintBoard() {
-		Board board = new Board();
-		String [][] boardValues= {{"O","O","3"},{"X","X","X"},{"O","O","X"}};
-		board.setBoard(boardValues);
-		board.printBoard();
-	}
-
-	/**
-	 * Print board negative.
-	 */
-	@Test
-	public void testPrintBoardNegative() {
-		Board board = new Board();
-		board.printBoard();
 	}
 
 	@Test

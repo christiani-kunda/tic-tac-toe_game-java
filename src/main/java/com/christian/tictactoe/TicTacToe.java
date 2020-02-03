@@ -1,4 +1,4 @@
-package main.java.com.christian.tictactoe;
+package com.christian.tictactoe;
 
 import java.io.InputStream;
 import java.util.Scanner;
@@ -24,7 +24,7 @@ public class TicTacToe {
         String [][] boardValues= {{"1","2","3"},{"4","5","6"},{"7","8","9"}};
         board.setBoard(boardValues);
         /* printing the board*/
-        board.printBoard();
+        this.printBoard(board);
 
         /* Getting the user's choice of player */
         System.out.print("Choose between 0 and X players the you are going to use: ");
@@ -45,7 +45,7 @@ public class TicTacToe {
         /* mocking playing - making moves */
         while (!board.checkWins(computerPlayer) && board.stillHasMoves()) {
             play(board, humanPlayer, computerPlayer, in);
-            board.printBoard();
+            this.printBoard(board);
         }
         if(board.checkWins(computerPlayer)){
             System.out.printf("payer %s won", board.getWinner());
@@ -67,7 +67,7 @@ public class TicTacToe {
         int humanChoice = scan.nextInt();
         while(!board.checkIfSpotIsAvailable(humanChoice)) {
             System.out.println("The chosen position has been taken or does not exist");
-            board.printBoard();
+            this.printBoard(board);
             scan = new Scanner(System.in);
             humanChoice = scan.nextInt();
         }
@@ -83,6 +83,24 @@ public class TicTacToe {
 
             /* putting the computer choice in the board*/
             board.putDataInTheBoard(computerChoice, computerPlayer);
+        }
+    }
+
+    /* A method that prints the board */
+    public void printBoard(Board board){
+        String [][] boardValues = board.getBoard();
+        /* Checking if the board has been initialized*/
+        if(boardValues == null || boardValues.length == 0) {
+            boardValues = new String[][]{{"1","2","3"},{"4","5","6"},{"7","8","9"}};
+        }
+
+        /* Looping through the board positions printing the content. If there no plays it should display position
+        numbers */
+        for (String[] boardValue : boardValues) {
+            for (int j = 0; j < boardValues.length; j++) {
+                System.out.print(boardValue[j] + "  |  ");
+            }
+            System.out.print("\n-  -  -  -  -  -\n");
         }
     }
 }

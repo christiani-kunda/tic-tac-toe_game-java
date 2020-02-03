@@ -47,7 +47,7 @@
 						<manifest>
 							<addClasspath>true</addClasspath>
 							<classpathPrefix>lib/</classpathPrefix>
-							<mainClass>main.java.com.christian.Main</mainClass>
+							<mainClass>com.christian.Main</mainClass>
 						</manifest>
 					</archive>
 				</configuration>

@@ -1,4 +1,4 @@
-package main.java.com.christian.tictactoe;
+package com.christian.tictactoe;
 
 /**
  * The Class Board.
@@ -232,26 +232,6 @@ public class Board {
 	 */
 	public void setBoard(String[][] board) {
 		this.boardValues = board;
-	}
-
-	/**
-	 * Print board.
-	 */
-	/* A method that prints the board */
-	public void printBoard(){
-		/* Checking if the board has been initialized*/
-		if(boardValues == null || boardValues.length == 0) {
-			this.boardValues = new String[][]{{"1","2","3"},{"4","5","6"},{"7","8","9"}};
-		}
-
-        /* Looping through the board positions printing the content. If there no plays it should display position
-        numbers */
-		for (String[] boardValue : boardValues) {
-			for (int j = 0; j < boardValues.length; j++) {
-				System.out.print(boardValue[j] + "  |  ");
-			}
-			System.out.print("\n-  -  -  -  -  -\n");
-		}
 	}
 
 	/**

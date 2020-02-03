@@ -1,4 +1,4 @@
-package main.java.com.christian.tictactoe;
+package com.christian.tictactoe;
 
 /**
  * The Class MinMax.

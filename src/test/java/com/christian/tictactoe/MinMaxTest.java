@@ -1,7 +1,5 @@
-package test.java.com.christian.tictactoe;
+package com.christian.tictactoe;
 
-import main.java.com.christian.tictactoe.Board;
-import main.java.com.christian.tictactoe.MinMax;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
