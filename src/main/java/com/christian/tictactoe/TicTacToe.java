@@ -16,8 +16,8 @@ public class TicTacToe {
     public void init(InputStream in) {
 
         /* Create player holders */
-        String humanPlayer;
-        String computerPlayer;
+        String humanPlayerValue;
+        String computerPlayerValue;
 
         /* Initialize the board */
         Board board = new Board();
@@ -29,25 +29,25 @@ public class TicTacToe {
         /* Getting the user's choice of player */
         System.out.print("Choose between 0 and X players the you are going to use: ");
         Scanner scan = new Scanner(in);
-        humanPlayer = scan.next().toUpperCase();
-        while(humanPlayer.isEmpty() || (!humanPlayer.equalsIgnoreCase("O") && !humanPlayer.equalsIgnoreCase("X"))){
+        humanPlayerValue = scan.next().toUpperCase();
+        while(humanPlayerValue.isEmpty() || (!humanPlayerValue.equalsIgnoreCase("O") && !humanPlayerValue.equalsIgnoreCase("X"))){
             System.out.print("Choose properly between 0 and X players the you are going to use: ");
-            humanPlayer = scan.next().toUpperCase();
+            humanPlayerValue = scan.next().toUpperCase();
         }
-        if(humanPlayer.equalsIgnoreCase("O")){
-            System.out.print("You are going to play with: " + humanPlayer);
-            computerPlayer = "X";
+        if(humanPlayerValue.equalsIgnoreCase("O")){
+            System.out.print("You are going to play with: " + humanPlayerValue);
+            computerPlayerValue = "X";
         } else {
             System.out.print("You are going to play with: X");
-            computerPlayer = "O";
+            computerPlayerValue = "O";
         }
 
         /* mocking playing - making moves */
-        while (!board.checkWins(computerPlayer) && board.stillHasMoves()) {
-            play(board, humanPlayer, computerPlayer, in);
+        while (!board.hasWins(computerPlayerValue) && board.stillHasMoves()) {
+            play(board, humanPlayerValue, computerPlayerValue, in);
             this.printBoard(board);
         }
-        if(board.checkWins(computerPlayer)){
+        if(board.hasWins(computerPlayerValue)){
             System.out.printf("payer %s won", board.getWinner());
         } else {
             System.out.print("DRAW");
@@ -76,7 +76,7 @@ public class TicTacToe {
         board.putDataInTheBoard(humanChoice,humanPlayer);
 
         /* Check if there is no win and there still moves */
-        if(!board.checkWins(computerPlayer) && board.stillHasMoves()) {
+        if(!board.hasWins(computerPlayer) && board.stillHasMoves()) {
             MinMax minMax = new MinMax();
             // make the computation and play -- the ai will pick the first position available starting from 1.
             Integer computerChoice = minMax.findingBestMove(board, computerPlayer, humanPlayer);

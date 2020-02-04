@@ -7,27 +7,21 @@ package com.christian.tictactoe;
  */
 public class Board {
 
-	/**
-	 * The Board.
-	 */
 	private String [][] boardValues = {};
 
-	/**
-	 * The Winner.
-	 */
 	private String  winner;
 
 	/**
 	 * Gets position from a 2d array given the number of columns and the coordinates.
 	 *
-	 * @param i               the
-	 * @param j               the j
+	 * @param rowNumber       the row number
+	 * @param columnNumber    the column number
 	 * @param numberOfColumns the number of columns
 	 * @return the position
 	 */
-	public int getPosition(int i, int j, int numberOfColumns) {
-		if(j<numberOfColumns){
-			return i*numberOfColumns + j + 1;
+	public int getBoardPosition(int rowNumber, int columnNumber, int numberOfColumns) {
+		if(columnNumber<numberOfColumns){
+			return rowNumber*numberOfColumns + columnNumber + 1;
 		}
 		return -1;
 	}
@@ -56,7 +50,7 @@ public class Board {
 	 * @param computerPlayer the computer player
 	 * @return the boolean
 	 */
-	public boolean checkWins(final String computerPlayer) {
+	public boolean hasWins(final String computerPlayer) {
 		return computeTheScore(computerPlayer) == 10 || computeTheScore(computerPlayer) == -10;
 	}
 

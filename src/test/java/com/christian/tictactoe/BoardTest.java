@@ -16,14 +16,14 @@ import static org.junit.Assert.assertTrue;
 public class BoardTest {
 
 	/**
-	 * Test get position.
+	 * Test getting the position from the board.
 	 */
 	@Test
-	public void testGetPosition() {
+	public void testGetPositionFromBoard() {
 
 		Board board = new Board();
-		int position = board.getPosition(0, 1,3);
-		assertEquals(position,2);
+		int position = board.getBoardPosition(0, 1,3);
+		assertEquals(2, position);
 	}
 
 	/**
@@ -33,7 +33,7 @@ public class BoardTest {
 	public void testGetPositionWithColumnCoordinatesGreaterThanColumnNumber() {
 
 		Board board = new Board();
-		int position = board.getPosition(0, 3,3);
+		int position = board.getBoardPosition(0, 3,3);
 		assertEquals(position,-1);
 	}
 
@@ -69,7 +69,7 @@ public class BoardTest {
 		Board board = new Board();
 		String [][] boardValues= {{"O","O","X"},{"X","X","X"},{"O","O","X"}};
 		board.setBoard(boardValues);
-		boolean won = board.checkWins("X");
+		boolean won = board.hasWins("X");
 		assertTrue(won);
 	}
 
@@ -81,7 +81,7 @@ public class BoardTest {
 		Board board = new Board();
 		String [][] boardValues= {{"O","O","X"},{"X","X","X"},{"O","O","X"}};
 		board.setBoard(boardValues);
-		boolean won = board.checkWins("O");
+		boolean won = board.hasWins("O");
 		assertTrue(won);
 	}
 
@@ -93,7 +93,7 @@ public class BoardTest {
 		Board board = new Board();
 		String [][] boardValues= {{"O","O","X"},{"X","O","X"},{"O","X","X"}};
 		board.setBoard(boardValues);
-		boolean won = board.checkWins("X");
+		boolean won = board.hasWins("X");
 		assertTrue(won);
 	}
 
@@ -105,7 +105,7 @@ public class BoardTest {
 		Board board = new Board();
 		String [][] boardValues= {{"O","O","X"},{"X","O","X"},{"O","X","X"}};
 		board.setBoard(boardValues);
-		boolean won = board.checkWins("O");
+		boolean won = board.hasWins("O");
 		assertTrue(won);
 	}
 
@@ -117,7 +117,7 @@ public class BoardTest {
 		Board board = new Board();
 		String [][] boardValues= {{"O","O","X"},{"O","X","X"},{"X","O","O"}};
 		board.setBoard(boardValues);
-		boolean won = board.checkWins("X");
+		boolean won = board.hasWins("X");
 		assertTrue(won);
 	}
 
@@ -129,7 +129,7 @@ public class BoardTest {
 		Board board = new Board();
 		String [][] boardValues= {{"O","O","X"},{"O","X","X"},{"X","O","O"}};
 		board.setBoard(boardValues);
-		boolean won = board.checkWins("O");
+		boolean won = board.hasWins("O");
 		assertTrue(won);
 	}
 
@@ -141,7 +141,7 @@ public class BoardTest {
 		Board board = new Board();
 		String [][] boardValues= {{"X","O","O"},{"O","X","X"},{"O","O","X"}};
 		board.setBoard(boardValues);
-		boolean won = board.checkWins("X");
+		boolean won = board.hasWins("X");
 		assertTrue(won);
 	}
 
@@ -153,7 +153,7 @@ public class BoardTest {
 		Board board = new Board();
 		String [][] boardValues= {{"X","O","O"},{"O","X","X"},{"O","O","X"}};
 		board.setBoard(boardValues);
-		boolean won = board.checkWins("O");
+		boolean won = board.hasWins("O");
 		assertTrue(won);
 	}
 
@@ -165,7 +165,7 @@ public class BoardTest {
 		Board board = new Board();
 		String [][] boardValues= {{"O","X","X"},{"X","X","O"},{"O","O","X"}};
 		board.setBoard(boardValues);
-		boolean won = board.checkWins("X");
+		boolean won = board.hasWins("X");
 		assertFalse(won);
 	}
 
@@ -177,7 +177,7 @@ public class BoardTest {
 		Board board = new Board();
 		String [][] boardValues= {{"O","O","3"},{"X","X","O"},{"O","O","X"}};
 		board.setBoard(boardValues);
-		boolean won = board.checkWins("O");
+		boolean won = board.hasWins("O");
 		assertFalse(won);
 	}
 
@@ -214,7 +214,7 @@ public class BoardTest {
 		String [][] boardValues= {{"O","O","3"},{"X","X","X"},{"O","O","X"}};
 		board.setBoard(boardValues);
 		int score = board.computeTheScore("X");
-		assertEquals(score,10);
+		assertEquals(10, score);
 	}
 
 	@Test
@@ -223,6 +223,6 @@ public class BoardTest {
 		String [][] boardValues= {{"O","O","3"},{"X","X","X"},{"O","O","X"}};
 		board.setBoard(boardValues);
 		board.putDataInTheBoard(3,"X");
-		assertEquals(board.getBoard()[0][2],"X");
+		assertEquals("X", board.getBoard()[0][2]);
 	}
 }
