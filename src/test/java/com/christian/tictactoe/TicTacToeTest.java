@@ -15,18 +15,12 @@ import static org.junit.Assert.assertEquals;
 @RunWith(BlockJUnit4ClassRunner.class)
 public class TicTacToeTest {
 
-	/**
-	 * Test init.
-	 */
 	@Test(expected = NoSuchElementException.class)
 	public void testInit() {
 		TicTacToe ticTacToe = new TicTacToe();
 		ticTacToe.init(new ByteArrayInputStream("X".getBytes()));
 	}
 
-	/**
-	 * Test play.
-	 */
 	@Test
 	public void testPlay() {
 		TicTacToe ticTacToe = new TicTacToe();
@@ -37,9 +31,6 @@ public class TicTacToeTest {
 		assertEquals(board.getBoard()[0][2],"X");
 	}
 
-	/**
-	 * Print board.
-	 */
 	@Test
 	public void testPrintBoard() {
 		Board board = new Board();
@@ -49,9 +40,6 @@ public class TicTacToeTest {
 		ticTacToe.printBoard(board);
 	}
 
-	/**
-	 * Print board negative.
-	 */
 	@Test
 	public void testPrintBoardNegative() {
 		Board board = new Board();

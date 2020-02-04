@@ -11,13 +11,12 @@ import static org.junit.Assert.assertTrue;
 
 /**
  * The type Board test.
+ *
+ * @author Christian
  */
 @RunWith(BlockJUnit4ClassRunner.class)
 public class BoardTest {
 
-	/**
-	 * Test getting the position from the board.
-	 */
 	@Test
 	public void testGetPositionFromBoard() {
 
@@ -26,9 +25,6 @@ public class BoardTest {
 		assertEquals(2, position);
 	}
 
-	/**
-	 * Test get position with column coordinates greater than column number.
-	 */
 	@Test
 	public void testGetPositionWithColumnCoordinatesGreaterThanColumnNumber() {
 
@@ -37,9 +33,6 @@ public class BoardTest {
 		assertEquals(position,-1);
 	}
 
-	/**
-	 * Test still has moves.
-	 */
 	@Test
 	public void testStillHasMoves() {
 		Board board = new Board();
@@ -49,9 +42,6 @@ public class BoardTest {
 		assertTrue(hasMoves);
 	}
 
-	/**
-	 * Test still has moves negative.
-	 */
 	@Test
 	public void testStillHasMovesNegative() {
 		Board board = new Board();
@@ -61,9 +51,6 @@ public class BoardTest {
 		assertFalse(hasMoves);
 	}
 
-	/**
-	 * Test check horizontal wins when the computer is x.
-	 */
 	@Test
 	public void testCheckHorizontalWinsWhenTheComputerIsX() {
 		Board board = new Board();
@@ -73,9 +60,6 @@ public class BoardTest {
 		assertTrue(won);
 	}
 
-	/**
-	 * Test check horizontal wins when the computer is o.
-	 */
 	@Test
 	public void testCheckHorizontalWinsWhenTheComputerIsO() {
 		Board board = new Board();
@@ -85,9 +69,6 @@ public class BoardTest {
 		assertTrue(won);
 	}
 
-	/**
-	 * Test check vertical wins when the computer is x.
-	 */
 	@Test
 	public void testCheckVerticalWinsWhenTheComputerIsX() {
 		Board board = new Board();
@@ -97,9 +78,6 @@ public class BoardTest {
 		assertTrue(won);
 	}
 
-	/**
-	 * Test check vertical wins when the computer is o.
-	 */
 	@Test
 	public void testCheckVerticalWinsWhenTheComputerIsO() {
 		Board board = new Board();
@@ -109,9 +87,6 @@ public class BoardTest {
 		assertTrue(won);
 	}
 
-	/**
-	 * Test check diagonal wins when player is x.
-	 */
 	@Test
 	public void testCheckDiagonalWinsWhenPlayerIsX() {
 		Board board = new Board();
@@ -121,9 +96,6 @@ public class BoardTest {
 		assertTrue(won);
 	}
 
-	/**
-	 * Test check diagonal wins when player is o.
-	 */
 	@Test
 	public void testCheckDiagonalWinsWhenPlayerIsO() {
 		Board board = new Board();
@@ -133,9 +105,6 @@ public class BoardTest {
 		assertTrue(won);
 	}
 
-	/**
-	 * Test check reverse diagonal wins when player is x.
-	 */
 	@Test
 	public void testCheckReverseDiagonalWinsWhenPlayerIsX() {
 		Board board = new Board();
@@ -145,9 +114,6 @@ public class BoardTest {
 		assertTrue(won);
 	}
 
-	/**
-	 * Test check reverse diagonal wins when player is o.
-	 */
 	@Test
 	public void testCheckReverseDiagonalWinsWhenPlayerIsO() {
 		Board board = new Board();
@@ -157,9 +123,6 @@ public class BoardTest {
 		assertTrue(won);
 	}
 
-	/**
-	 * Test check draw.
-	 */
 	@Test
 	public void testCheckDraw() {
 		Board board = new Board();
@@ -169,9 +132,6 @@ public class BoardTest {
 		assertFalse(won);
 	}
 
-	/**
-	 * Test check wins negative.
-	 */
 	@Test
 	public void testCheckWinsNegative() {
 		Board board = new Board();
@@ -181,9 +141,6 @@ public class BoardTest {
 		assertFalse(won);
 	}
 
-	/**
-	 * Test check if spot is available.
-	 */
 	@Test
 	public void testCheckIfSpotIsAvailable() {
 		Board board = new Board();
@@ -193,9 +150,6 @@ public class BoardTest {
 		assertTrue(positionIsAvailable);
 	}
 
-	/**
-	 * Test check if spot is available negative.
-	 */
 	@Test
 	public void testCheckIfSpotIsAvailableNegative() {
 		Board board = new Board();
@@ -205,9 +159,6 @@ public class BoardTest {
 		assertFalse(positionIsAvailable);
 	}
 
-	/**
-	 * Test compute the score.
-	 */
 	@Test
 	public void testComputeTheScore() {
 		Board board = new Board();
