@@ -1,4 +1,4 @@
-package main.java.com.christian.tictactoe;
+package com.christian.tictactoe;
 
 /**
  * The Class MinMax.
@@ -35,7 +35,7 @@ public class MinMax {
 				}
 			}
 		}
-		return board.getPosition(x,y,board.getBoard().length);
+		return board.getBoardPosition(x,y,board.getBoard().length);
 	}
 
 	/**
@@ -49,7 +49,7 @@ public class MinMax {
 	 */
 	/* .*/
 	private int minMaxPosition(Board board, boolean isMaximizing, String computerPlayer, String humanPlayer) {
-		if(board.checkWins(computerPlayer) || !board.stillHasMoves()){
+		if(board.hasWins(computerPlayer) || !board.stillHasMoves()){
 			return board.computeTheScore(computerPlayer);
 		}
 

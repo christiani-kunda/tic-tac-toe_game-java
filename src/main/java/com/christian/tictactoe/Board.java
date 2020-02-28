@@ -1,4 +1,4 @@
-package main.java.com.christian.tictactoe;
+package com.christian.tictactoe;
 
 /**
  * The Class Board.
@@ -7,27 +7,21 @@ package main.java.com.christian.tictactoe;
  */
 public class Board {
 
-	/**
-	 * The Board.
-	 */
 	private String [][] boardValues = {};
 
-	/**
-	 * The Winner.
-	 */
 	private String  winner;
 
 	/**
 	 * Gets position from a 2d array given the number of columns and the coordinates.
 	 *
-	 * @param i               the
-	 * @param j               the j
+	 * @param rowNumber       the row number
+	 * @param columnNumber    the column number
 	 * @param numberOfColumns the number of columns
 	 * @return the position
 	 */
-	public int getPosition(int i, int j, int numberOfColumns) {
-		if(j<numberOfColumns){
-			return i*numberOfColumns + j + 1;
+	public int getBoardPosition(int rowNumber, int columnNumber, int numberOfColumns) {
+		if(columnNumber<numberOfColumns){
+			return rowNumber*numberOfColumns + columnNumber + 1;
 		}
 		return -1;
 	}
@@ -56,7 +50,7 @@ public class Board {
 	 * @param computerPlayer the computer player
 	 * @return the boolean
 	 */
-	public boolean checkWins(final String computerPlayer) {
+	public boolean hasWins(final String computerPlayer) {
 		return computeTheScore(computerPlayer) == 10 || computeTheScore(computerPlayer) == -10;
 	}
 
@@ -232,26 +226,6 @@ public class Board {
 	 */
 	public void setBoard(String[][] board) {
 		this.boardValues = board;
-	}
-
-	/**
-	 * Print board.
-	 */
-	/* A method that prints the board */
-	public void printBoard(){
-		/* Checking if the board has been initialized*/
-		if(boardValues == null || boardValues.length == 0) {
-			this.boardValues = new String[][]{{"1","2","3"},{"4","5","6"},{"7","8","9"}};
-		}
-
-        /* Looping through the board positions printing the content. If there no plays it should display position
-        numbers */
-		for (String[] boardValue : boardValues) {
-			for (int j = 0; j < boardValues.length; j++) {
-				System.out.print(boardValue[j] + "  |  ");
-			}
-			System.out.print("\n-  -  -  -  -  -\n");
-		}
 	}
 
 	/**
